@@ -30,11 +30,11 @@ def	gradToBogenmass(degrees):
 	# der Sachverhalt deutlicher
 	return degrees/180.0*math.pi
 
-def	getCirclePoint(position, scale, cursorLength)
+def	getCirclePoint(position, scale, cursorLength):
 	degrees = getCursorPositionDegrees(position, scale)
 	bogenmass = gradToBogenmass(degrees)
-	xPos = round(math.cos(bogenmass)*cursorLength+windowCenter[0]
-	yPos = round(math.sin(bogenmass)*cursorLength+windowCenter[1]
+	xPos = round(math.cos(bogenmass)*cursorLength+windowCenter[0])
+	yPos = round(math.sin(bogenmass)*cursorLength+windowCenter[1])
 	return (xPos, yPos)
 
 
@@ -49,13 +49,14 @@ def	handleEvents():
 
 def	main():
 	# Initialisierung des Screens
+	global screen
 	pygame.init()
 	screen = pygame.display.set_mode(\
-	 windowWidth, windowHeight)\
+	 (windowWidth, windowHeight)\
 	 ,pygame.HWSURFACE | pygame.DOUBLEBUF);
 	pygame.display.set_caption('Analog Clock');
 
-	# Endlosschleife für den Hauptablauf der Uhr
+	# Endlosschleife fuer den Hauptablauf der Uhr
 	while True:
 		handleEvents()
 		screen.fill(backgroundColor)
@@ -69,14 +70,14 @@ def	main():
 
 def	drawBackground():
 	screen.fill(backgroundColor)
-	pygame.draw.ellipse(screen, clockMarginColor, (windowMargin, \ 
-	 windowMargin, windowWidt-2*windowMargin, \
+	pygame.draw.ellipse(screen, clockMarginColor, (windowMargin, \
+	 windowMargin, windowWidth-2*windowMargin, \
 	 windowWidth-2*windowMargin))
-	pygame.draw.ellipse(screen, , clockBackgroundColor, \
+	pygame.draw.ellipse(screen, clockBackgroundColor, \
 	 (windowMargin+clockMarginWidth/2, \
 	 windowMargin+clockMarginWidth/2, \
-	 window Width -(windowMargin+clockMarginWidth/2)*2, \
- 	 window Width -(windowMargin+clockMarginWidth/2)*2))
+	 windowWidth -(windowMargin+clockMarginWidth/2)*2, \
+ 	 windowWidth -(windowMargin+clockMarginWidth/2)*2))
 
 def	drawForeground():
 	pygame.draw.ellipse(screen, clockMarginColor, \
@@ -125,12 +126,12 @@ def timeGoesOn():
 	if minute > 60:
 		hour += 1
 		minute %= 60
-	if hour > 12
+	if hour > 12:
 		hour%=12
 
 
 
-if__name__=='__main__':
+if __name__ =='__main__':
 	main()
 
 
